@@ -1,0 +1,16 @@
+{{ define "posts/index.tmpl" }}
+<html><h1>
+	{{ .title }}
+</h1>
+<p>Using posts/index.tmpl</p>
+
+
+{{ $articles := .list }}
+
+
+  {{ range $article := $articles }}
+ {{ $article }}
+  {{ end }}
+</html>
+
+{{ end }}
