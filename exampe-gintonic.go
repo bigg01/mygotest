@@ -43,7 +43,18 @@ func main() {
 	})
 
 	r.GET("/someYAML", func(c *gin.Context) {
-		c.YAML(http.StatusOK, gin.H{"message": "hey", "status": http.StatusOK})
+		var msg struct {
+			Name    string `json:"user"`
+			Message string
+			Number  int
+			Liste   []string
+		}
+		msg.Name = "Lena"
+		msg.Message = "hey"
+		msg.Number = 123
+		msg.Liste = []string {"hello", "hello2"}
+		//c.YAML(http.StatusOK, gin.H{"message": "hey", "status": http.StatusOK})
+		c.YAML(http.StatusOK, msg)
 	})
 
 
