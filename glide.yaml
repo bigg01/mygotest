@@ -1,5 +1,5 @@
 package: github.com/bigg01/mygotest
 import:
-- package: github.com/spf13/viper
 - package: github.com/Sirupsen/logrus
-- package: github.com/labstack/echo
+- package: github.com/gin-gonic/gin
+- package: github.com/spf13/viper

@@ -1,0 +1,52 @@
+package main
+
+import (
+	"net/http"
+	"strconv"
+
+
+	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
+
+
+)
+
+// e.POST("/save", save)
+
+//https://scotch.io/tutorials/create-a-single-page-app-with-go-echo-and-vue
+func save(c echo.Context) error {
+	// Get name and email
+	name := c.FormValue("name")
+	email := c.FormValue("email")
+	return c.String(http.StatusOK, "name:"+name+", email:"+email)
+}
+
+type User struct {
+	Name  string `json:"name" xml:"name" form:"name" query:"name"`
+	Email string `json:"email" xml:"email" form:"email" query:"email"`
+}
+
+e.POST("/json", func(c echo.Context) error {
+	u := new(User)
+	if err := c.Bind(u); err != nil {
+		return err
+	}
+	return c.JSON(http.StatusCreated, u)
+	// or
+	// return c.XML(http.StatusCreated, u)
+})
+
+func main() {
+	// Echo instance
+	e := echo.New()
+
+	e.POST("/save", save)
+	e.POST("/oli", save)
+	// Route => handler
+	e.GET("/", func(c echo.Context) error {
+		return c.String(http.StatusOK, "Hello, World!\n")
+	})
+
+	// Start server
+	e.Logger.Info(e.Start(":1323"))
+}
